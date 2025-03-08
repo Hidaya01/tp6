@@ -1,10 +1,10 @@
 const mongoose = require('mongoose');
 
 const Teacher = new mongoose.Schema({
-     id: String, 
-     name: String, 
-     bio: String,
-     cours: [String]
+     id: { type: String, required: true }, 
+     name: { type: String, required: true }, 
+     bio: { type: String, required: true },
+     cours: { type: [String], required: true }
 
 });
 
