@@ -4,7 +4,7 @@ const Teacher = require('./models/Teacher');
 const Course = require('../models/Course');
 const verifyToken = require('../middleware/verifyToken');
 
-router.get('/all', verifyToken,  (req, res) => {
+router.get('/all', verifyToken, (req, res) => {
     try {
         const teachers =  Teacher.find();
         res.json(teachers);

@@ -5,7 +5,7 @@ const router = express.Router();
 
 //tous les cours
 router.get('/all', verifyToken,(req, res) => {
-  const courses =   Course.find();
+  const courses = Course.find();
   res.json(courses);
 });
 

@@ -1,9 +1,9 @@
 const express = require('express');
-const User = require('./Models/user');
+const User = require('../Models/User');
 const jwt = require('jsonwebtoken');
 const bcrypt = require('bcryptjs');  
 const router = express.Router();
-const verifyToken = require('./Middleware/verifyToken');
+const verifyToken = require('../Middleware/verifyToken');
 
 router.get('/test', (req,res)=>{
     res.status(201).send('test worked!!');
@@ -11,14 +11,12 @@ router.get('/test', (req,res)=>{
 })
 router.post('/register',  (req, res) => {
     const { name, email, password } = req.body;
-    console.log("trrrrrrrrrrr");
     const hashedPassword =  bcrypt.hash(password, 10); 
   
     const existingUser =  User.findOne({ email });
     if (existingUser) {
       return res.status(400).send('User already exists');
     }
-
     const newUser = new User({ name, email, password: hashedPassword });
 
     try {
